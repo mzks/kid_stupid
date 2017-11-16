@@ -5,7 +5,7 @@ void fitshow(TString file = "summary.txt"){
 	auto C = new TCanvas();
 	C->Divide(2,4);
 
-	Double_t f1, f2, f3, f4, f5, f6, f7, f8, f9,f10,f11,f12;
+	Double_t f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12;
 
 	auto tau = new TH1D("tau","tau",100,20,40);
 	auto height = new TH1D("height","height",100,0,300e6);
@@ -17,7 +17,7 @@ void fitshow(TString file = "summary.txt"){
 	
 
 	ifstream ifs(file);
-	while(ifs >> f1 >> f2 >> f3 >> f4 >>f5>>f6>>f7>>f8>>f9>>f10>>f11>>f12){
+	while(ifs >>f1>>f2>>f3>>f4>>f5>>f6>>f7>>f8>>f9>>f10>>f11>>f12){
 		tau->Fill(f4);
 		height->Fill(f3*exp(-100/f4));
 		chi2->Fill(f8);
