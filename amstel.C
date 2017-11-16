@@ -42,8 +42,8 @@ void amstel::Loop()
    Long64_t nbytes = 0, nb = 0;
 
 
-   for (Long64_t jentry=0; jentry<nentries;jentry++) {
-   //for (Long64_t jentry=0; jentry<1;jentry++) {
+   //for (Long64_t jentry=0; jentry<nentries;jentry++) {
+   for (Long64_t jentry=0; jentry<1;jentry++) {
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
@@ -67,7 +67,7 @@ void amstel::Loop()
 	  pulseHeight = baseline - pulseHeight;
 
 
-	  //auto C = new TCanvas();
+	  auto C = new TCanvas();
 	  auto tg = new TGraph(T->size(),T->data(),Q->data());
 	  tg->Draw();
 	  
@@ -89,10 +89,10 @@ void amstel::Loop()
 
 	 tg->Fit("decayfunc","","",MIN,MAX);
 
-	 //stringstream ss;
-	 //ss << "fig/fig" << jentry << ".pdf";
-	 //TString file = ss.str();
-	 //C->SaveAs(file);
+	 stringstream ss;
+	 ss << "fig" << jentry << ".pdf";
+	 TString file = ss.str();
+	 C->SaveAs(file);
 
 	 ofs << jentry << " "
 		 << decayfunc->GetParameter(0) << " " 
@@ -107,7 +107,7 @@ void amstel::Loop()
 		 << area << " "
 		 << pulseHeight << endl;
 
-	delete tg;
+	//delete tg;
 
 
    }
