@@ -7,7 +7,7 @@ void fitshow(TString file = "summary.txt"){
 
 	Double_t f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12;
 
-	auto tau = new TH1D("tau","tau",100,20,40);
+	auto tau = new TH1D("tau","tau",150,20,50);
 	auto height = new TH1D("height","height",100,0,300e6);
 	auto chi2 = new TH1D("chi2","chi2",100,0,1e17);
 	auto area = new TH1D("area","area",100,0,1e10);
@@ -28,21 +28,25 @@ void fitshow(TString file = "summary.txt"){
 
 
 	}
-	C->cd(1);
-	tau->Draw();
 	C->cd(2);
 	chi2->Draw();
-	C->cd(3);
-	height->Draw();
-	C->cd(4);
-	area->Draw();
-	C->cd(5);
-	heightExp->Draw();
-	C->cd(6);
-	areaExp->Draw();
-	C->cd(7);
-	baseline->Draw();
-	C->cd(8);
 
+	C->cd(5);
+	height->Draw();
+	C->cd(6);
+	area->Draw();
+	C->cd(7);
+	heightExp->Draw();
+	C->cd(8);
+	areaExp->Draw();
+
+	C->cd(3);
+	baseline->Draw();
+	C->cd(4);
+	tau->SetTitle(";tau(us);counts/bins/total");
+	tau->Draw();
+
+
+	C->cd(1);
 	
 }
